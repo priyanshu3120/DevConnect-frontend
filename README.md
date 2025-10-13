@@ -5,3 +5,17 @@
 - install Tailwind css
 - install Daisy UI
 - add navbar component in app.jsx
+- create a navbar.jsx a seprate file
+- install react router dom
+- create BrowserRouter > Routes > Route=/ Body > RouteChildren
+- create an outlet in your Body component
+- create a footer
+- create Login page
+- install axios
+- Cors -> install cors in backend => add middleware in app.js with configurations: origin , credentials: true
+- whenever make api call so pass axios => {withcredentials: true} in forntend  
+- install react-redux + @reduxjs/toolkit => configureStore => provider => createSlice => add reducer to store
+- add redux devtools in chrome
+- Login and set if your data is coming properly in the store
+- NavBar should be update as soon as user login 
+- Refactor our code to add constants file + create a component folder
