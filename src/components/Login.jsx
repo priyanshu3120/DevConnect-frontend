@@ -9,6 +9,7 @@ const Login = () => {
 
     const [emailId, setEmailId] = useState("priyanshu@gmail.com");
     const [password, setPassword] = useState("Priyanshu@123");
+    const [error, setError] = useState("");
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -22,7 +23,7 @@ const Login = () => {
         return navigate("/");
     }
     catch(err){ 
-        console.error(err);
+        setError(err?.response?.data || "Something went wrong");
     }  
 }
 
@@ -90,6 +91,7 @@ const Login = () => {
   <br />At least one number <br />At least one lowercase letter <br />At least one uppercase letter
 </p>
         </div>
+        <p className="text-red-500">{error}</p>
         <div className="card-actions justify-center my-2">
         <button className="btn" onClick={handleLogin}>Login</button>
     </div>

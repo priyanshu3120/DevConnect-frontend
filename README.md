@@ -11,6 +11,7 @@
 - create an outlet in your Body component
 - create a footer
 - create Login page
+
 - install axios
 - Cors -> install cors in backend => add middleware in app.js with configurations: origin , credentials: true
 - whenever make api call so pass axios => {withcredentials: true} in forntend  
