@@ -15,8 +15,16 @@
 - install axios
 - Cors -> install cors in backend => add middleware in app.js with configurations: origin , credentials: true
 - whenever make api call so pass axios => {withcredentials: true} in forntend  
-- install react-redux + @reduxjs/toolkit => configureStore => provider => createSlice => add reducer to store
+- install react-redux + @reduxjs/toolkit => configureStore => provider => createSlice =>  add reducer to store
 - add redux devtools in chrome
 - Login and set if your data is coming properly in the store
 - NavBar should be update as soon as user login 
 - Refactor our code to add constants file + create a component folder
+- You shoud not be access other routes without login
+- if token is not present, redirect user to login page
+- Logout feature
+- Get the feed and add the feed in the sotre
+- build the user card on feed
+- Edit Profile Features
+- Show Toast message on save of Profile
+- See all the connections
