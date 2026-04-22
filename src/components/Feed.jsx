@@ -1,6 +1,6 @@
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addFeed } from "../utils/feedSlice";
 import Card from "./Card";
@@ -59,14 +59,18 @@ const EmptyFeed = () => (
 const Feed = () => {
   const feed = useSelector((store) => store.feed);
   const dispatch = useDispatch();
+  const [error, setError] = useState(null);
 
   const getFeed = async () => {
-    if (feed) return;
+    // Only skip if feed is already loaded (null means not yet fetched)
+    if (feed !== null) return;
     try {
+      setError(null);
       const res = await axios.get(BASE_URL + "/feed", { withCredentials: true });
       dispatch(addFeed(res?.data));
     } catch (err) {
       console.error(err);
+      setError("Failed to load feed. Please try again.");
     }
   };
 
@@ -107,8 +111,27 @@ const Feed = () => {
       </div>
 
       {/* Card Area */}
-      {!feed ? (
-        <FeedSkeleton />
+      {feed === null ? (
+        error ? (
+          <div
+            className="glass-card animate-fade-in-up"
+            style={{ padding: "40px", textAlign: "center", maxWidth: 380 }}
+          >
+            <div style={{ fontSize: 48, marginBottom: 14 }}>⚠️</div>
+            <p style={{ color: "rgba(255,255,255,0.5)", fontFamily: "Inter, sans-serif", marginBottom: 20 }}>
+              {error}
+            </p>
+            <button
+              className="btn-glow"
+              onClick={() => { dispatch(addFeed(null)); getFeed(); }}
+              style={{ padding: "10px 28px", borderRadius: 12, cursor: "pointer", fontFamily: "Inter, sans-serif" }}
+            >
+              Retry
+            </button>
+          </div>
+        ) : (
+          <FeedSkeleton />
+        )
       ) : feed.length <= 0 ? (
         <EmptyFeed />
       ) : (

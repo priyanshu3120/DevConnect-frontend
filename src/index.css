@@ -331,12 +331,11 @@ body::after {
 
 .profile-card {
   transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s ease;
-  transform-style: preserve-3d;
   will-change: transform;
 }
 
 .profile-card:hover {
-  transform: rotateX(3deg) rotateY(-3deg) scale(1.02);
+  transform: translateY(-4px) scale(1.015);
   box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 40px rgba(124, 58, 237, 0.2);
 }
 
