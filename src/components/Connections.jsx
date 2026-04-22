@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { BASE_URL } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnections } from "../utils/connectionSlice";
+import { useNavigate } from "react-router-dom";
 
 const ConnectionSkeleton = () => (
   <div
@@ -46,6 +47,7 @@ const EmptyConnections = () => (
 const Connections = () => {
   const connections = useSelector((store) => store.connections);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const fetchConnections = async () => {
     try {
@@ -204,10 +206,11 @@ const Connections = () => {
                   </div>
                 </div>
 
-                {/* Chat placeholder */}
+                {/* Chat button */}
                 <div style={{ marginTop: 14 }}>
                   <button
                     className="btn-glow-cyan"
+                    onClick={() => navigate(`/chat/${_id}`)}
                     style={{
                       width: "100%",
                       padding: "9px",
@@ -220,21 +223,8 @@ const Connections = () => {
                       gap: 6,
                       fontFamily: "Inter, sans-serif",
                     }}
-                    title="Chat coming soon"
                   >
                     💬 Message
-                    <span
-                      style={{
-                        fontSize: "0.65rem",
-                        padding: "2px 6px",
-                        borderRadius: 99,
-                        background: "rgba(255,255,255,0.15)",
-                        letterSpacing: "0.04em",
-                        fontWeight: 700,
-                      }}
-                    >
-                      SOON
-                    </span>
                   </button>
                 </div>
               </div>
